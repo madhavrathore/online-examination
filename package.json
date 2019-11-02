@@ -1,0 +1,23 @@
+{
+  "name": "online-examination",
+  "version": "1.0.0",
+  "description": "Online tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madhavrathore/online-examination.git"
+  },
+  "author": "Madhav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madhavrathore/online-examination/issues"
+  },
+  "homepage": "https://github.com/madhavrathore/online-examination#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1"
+  }
+}
