@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-scribe-reduced-action-queue="true">
 <head>
 	<title>Online Examination</title>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body>
+<body class="clearfix" dir="ltr">
+	<nav class="navbar container-fluid navbar-light bg-light">
+  		<a class="navbar-brand" href="file:///home/madhav/project/online-examination/index.html" width="50" height="30">My page
+  		</a>
+  		<form  action="mainpage.php"  method="post">
+  			<table >
+			<div class="form-control-plaintext"></div>
+			<thead>
+				<tr>
+					<td>
+						<label for="email_address"></label>
+					</td>
+					<td>
+						<label for="password"></label>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+					<td>
+						<input type="email" class="form-control" placeholder="Email Address/Mobile No." name="email_address"  id="email_address" autofocus required>
+					</td>
+					<td>
+						<input type="password" class="form-control" placeholder="Password" name="password" id="password" required="Cannot be empty" autofocus>
+						<a href="www.forgot_password">Forgot Password?</a>	
+					</td>
+					<td>
+						<input type="submit" class="btn btn-primary " value="Login">
+					</td>
+			</tr>
+			</tbody>
+		</form>	
+	</nav>	
 
 
 <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
