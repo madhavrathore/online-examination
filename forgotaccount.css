@@ -1,0 +1,31 @@
+.inputtext
+{
+		-webkit-appearance:none;
+		border: 1px solid;
+		border-radius: 0;
+		margin:0;
+		padding:3px;  
+}
+
+.textbox
+{
+		top: 30%;
+		left:30%;
+		position:absolute;
+}
+
+.textbox h4
+{
+		font-size:40px;
+}
+
+.textbox input
+{
+		width:80%;
+}
+
+.search input 
+{
+	width:30%;
+	padding-right: 15px;
+}

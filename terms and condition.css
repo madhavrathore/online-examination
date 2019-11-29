@@ -1,0 +1,15 @@
+.h3
+{
+		text-align: center;
+		background-color: green;
+}
+
+.p strong
+{
+		text-align: center;
+		background-color: red;
+}
+.container
+{	
+	top:40%;
+}
