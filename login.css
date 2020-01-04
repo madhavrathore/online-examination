@@ -58,3 +58,8 @@ body
 	float: left;
 	margin:0 20px;
 }
+
+hr
+{	
+	border-bottom:1px solid white;
+}

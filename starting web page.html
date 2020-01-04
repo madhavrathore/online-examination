@@ -13,7 +13,7 @@
         <header>
           <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top scrolling-navbar ">
             <div class="container">
-              <a class="navbar-brand" style="color:black"; href="#"> 
+              <a class="navbar-brand" style="color:black"; href="file:///home/madhav/project/online-examination/about%20us.html"> 
                 <strong>ABOUT US</strong>
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,11 +27,11 @@
                     </a></bold>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" style="color: black"; href="#">Profile</a>
+                    <a class="nav-link" style="color: black"; href="file:///home/madhav/project/online-examination/profile.html">Profile</a>
                   </li>
                   <li>
                     <li class="nav-item">
-                      <a class="nav-link" style="color: black"; href="#">Contact us</a>
+                      <a class="nav-link" style="color: black"; href="file:///home/madhav/project/online-examination/contact.html">Contact us</a>
                     </li>
                 </ul>
                 <form class="no-validation form-inline">
@@ -66,6 +66,7 @@
                           </div>
                           <hr class="hr-dark">
                         </div>
+                        <form action="file:///home/madhav/examination-backend/api/user.php" method="POST" onSubmit =checkPassword(this)>
                         <div class="sm-form">
                         <div class="md-form">
                             <input type="text" name="name" class="form-group" data-type="text" value area-required="true" autofocus="1" placeholder="Applicant Name" required>
@@ -74,19 +75,25 @@
                             <input type="email" name="email" class="form-group" placeholder="Email address" value area-required="true" required>
                         </div>
                         <div class="md-form">
-                            <input type="email" name="email-confirmation" class="form-group" autofocus="1" placeholder="Re-enter Email" value area-required="true" required>
+                          <div class="form-group">
+                            <input type="password" id="password" name="password" autofocus="1" placeholder="New password" minlength="9" maxlength="12"
+                           required data-toggle="password" required>   
+                          </div>
                         </div>
                         <div class="md-form">
-                            <input type="password" name="password" class="form-group" autofocus="1" placeholder="New password" required>
+                          <div class="form-group">
+                            <input type="password" id="confirm-password" name="confirm-password"  placeholder="Re-enter password" minlength="9" maxlength="12"
+                            requireddata-toggle="password" required>
+                          </div>
                         </div>
                         <div class="md-form">
-                            <input type="password" name="confirm-password" class="form-group"  placeholder="Re-enter password" required>
-                        </div>
+                            <input type="Number" name="phone-number" class="form-group" placeholder="Phone Number" required>
+
                         <div class="md-form">Birthday:<br>&nbsp;
                           <div id="birthday">
                             <span data-type="selectors"  id="birthday">
                               <span>
-                                <select area-label="Day" name="birthday-day" title="Day">
+                                <select area-label="Day" name="date" title="Day">
                                   <option value="0">Day</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
@@ -120,7 +127,7 @@
                                   <option value="30">30</option>
                                   <option value="31">31</option>
                                 </select>
-                                <select area-label="month" name="birthday-month" title="Month">
+                                <select area-label="month" name="date" title="Month">
                                   <option value="0">Month</option>
                                   <option value="1">January</option>
                                   <option value="2">February</option>
@@ -135,7 +142,7 @@
                                   <option value="11">November</option>
                                   <option value="12">December</option>
                                 </select>
-                                <select area-label="year" name="birthday-year" title="Year">
+                                <select area-label="year" name="date" title="Year">
                                   <option value="0">Year</option>
                                   <option value="2019">2019</option>
                                   <option value="2018">2018</option>
@@ -174,12 +181,12 @@
                           </div>
                         </div><br>
                         <div class="center">
-                          Gender:<br><br><input type="radio" name="male" value="Male">Male
-                            <input type="radio" name="female" value="Female">Female</div>
+                          Gender:<br><br><input type="radio" name="gender" value="Male">Male
+                            <input type="radio" name="gender" value="Female">Female</div>
                               <div class="text-center mt-4">
                           <input type="submit" class="btn btn-success" value="Sign Up">
                           <div class="text-center mt-4">
-                            <input type="checkbox" value="I agree to">I agree to<a class="btn-hover" href="/home/madhav/project/online-examination/terms and condition.html">Terms and condition</div>
+                            <input type="checkbox" value="I agree to">I agree to<a class="btn-hover" href="/home/madhav/project/online-examination/terms and condition.html" required>Terms and condition</div>
                             </a>
                           </div>
                           </div>
@@ -196,15 +203,31 @@
     </div>
   </nav>
 </header>
-        <main>
-          <div class="container">
-            <div class="row py-5">
-              <div class="col-md-12 text-center">
-                
-              </div>
-            </div>
-          </div>
-        </main>
+ <script>
+    function checkPassword(form) { 
+                password =document.getValueById(password); 
+                confirm-password = document.getValueById(confirm-password); 
+                // If password not entered 
+                if (password == '') 
+                    alert ("Please enter Password"); 
+                      
+                // If confirm password not entered 
+                else if (confirm-password == '') 
+                    alert ("Please enter confirm password"); 
+                      
+                // If Not same return False.     
+                else if (password != confirm-password) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                } 
+  
+                // If same return True. 
+                else{ 
+                    alert("Password Match: Welcome!") 
+                    return true; 
+                } 
+            } 
+          </script>
 <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
