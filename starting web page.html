@@ -66,13 +66,13 @@
                           </div>
                           <hr class="hr-dark">
                         </div>
-                        <form action="file:///home/madhav/examination-backend/api/user.php" method="POST" onSubmit =checkPassword(this)>
+                        <form>
                         <div class="sm-form">
                         <div class="md-form">
-                            <input type="text" name="name" class="form-group" data-type="text" value area-required="true" autofocus="1" placeholder="Applicant Name" required>
+                            <input type="text" name="name" id="name" class="form-group" data-type="text" value area-required="true" autofocus="1" placeholder="Applicant Name" required>
                         </div>
                         <div class="md-form">
-                            <input type="email" name="email" class="form-group" placeholder="Email address" value area-required="true" required>
+                            <input type="email" name="email" id="email" class="form-group" placeholder="Email address" value area-required="true" required>
                         </div>
                         <div class="md-form">
                           <div class="form-group">
@@ -180,11 +180,11 @@
                             </span>
                           </div>
                         </div><br>
-                        <div class="center">
-                          Gender:<br><br><input type="radio" name="gender" value="Male">Male
+                        <div class="center" id="gender">
+                          Gender:<br><br><input type="radio" name="gender" value="Male" >Male
                             <input type="radio" name="gender" value="Female">Female</div>
                               <div class="text-center mt-4">
-                          <input type="submit" class="btn btn-success" value="Sign Up">
+                          <input type="submit" class="btn btn-success" value="Sign Up" onClick=submitForm(this)>
                           <div class="text-center mt-4">
                             <input type="checkbox" value="I agree to">I agree to<a class="btn-hover" href="/home/madhav/project/online-examination/terms and condition.html" required>Terms and condition</div>
                             </a>
@@ -205,29 +205,66 @@
 </header>
  <script>
     function checkPassword(form) { 
-                password =document.getValueById(password); 
-                confirm-password = document.getValueById(confirm-password); 
+               var password =document.getValueById(password); 
+               var confirmPassword = document.getValueById(confirm-password); 
                 // If password not entered 
-                if (password == '') 
+                if (password == '')
+                { 
                     alert ("Please enter Password"); 
-                      
+                }     
                 // If confirm password not entered 
-                else if (confirm-password == '') 
-                    alert ("Please enter confirm password"); 
+                else if (confirmPassword == '') 
+                {
+                  alert ("Please Enter confirm password");
+                  return false; 
+                }
                       
                 // If Not same return False.     
-                else if (password != confirm-password) { 
-                    alert ("\nPassword did not match: Please try again...") 
+                else if (password != confirmPassword) {  
                     return false; 
                 } 
   
                 // If same return True. 
-                else{ 
-                    alert("Password Match: Welcome!") 
+                else{  
                     return true; 
                 } 
-            } 
-          </script>
+            }
+function submitForm(form)
+{
+    if(checkPassword(form)==true)
+          {
+            var form = new FormData();
+              form.append("name",document.getValueById('name'));
+              form.append("email",document.getValueById('email'));
+              form.append("password",document.getValueById('password'));
+              form.append("phone-number",document.getValueById('phone-number'));
+              form.append("date",document.getValueById('date'));
+              form.append("gender",document.getValueById('gender'));
+
+              var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": "http://localhost/api/user.php",
+              "method": "POST",
+              "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "98f1bfbe-15ff-c932-5d5f-5e41042629ef"
+                  },
+              "processData": false,
+              "contentType": false,
+              "mimeType": "multipart/form-data",
+              "data": form
+                   }
+          $.ajax(settings).done(function (response) {
+        console.log(response);
+        });
+        }
+    else
+    {
+      alert("Check Password");
+    }
+}
+</script>
 <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
