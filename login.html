@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-scribe-reduced-action-queue="true">
 <head>
-	<title>Online Examination</title>
+	<title>Online Examination  Login</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
@@ -12,7 +12,7 @@
      <header>
           <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top scrolling-navbar ">
             <div class="container">
-              <a class="navbar-brand" style="color:black"; href="#"> 
+              <a class="navbar-brand" style="color:black"; href="file:///home/madhav/project/online-examination/about%20us.html"> 
                 <strong>ABOUT US</strong>
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,72 +26,74 @@
                     </a></bold>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" style="color: black"; href="#">Profile</a>
+                    <a class="nav-link" style="color: black"; href="file:///home/madhav/project/online-examination/profile.html">Profile</a>
                   </li>
                   <li>
                     <li class="nav-item">
-                      <a class="nav-link" style="color: black"; href="#">Contact us</a>
+                      <a class="nav-link" style="color: black"; href="file:///home/madhav/project/online-examination/contact.html">Contact us</a>
                     </li>
                 </ul>
                 <form class="no-validation form-inline">
                   <div class="md-form my-0">
                     <i class="fa fa-user-circle" style="font-size:34px"; aria-hidden="true"></i>
                   </div>
-                  <div class="md-form">
-                    <a href="login.html"><strong class="nav-link text-white">Log In</strong></a>
-                  </div>
                 </form>
               </div>
             </div>
           </nav>
         </header>
+  <form name='newForm'>
     <div class="login-box">
       <h1>Login</h1>
         <div class="textbox">
           <div class="md-form">
       	 <i class="fa fa-user-circle" aria-hidden="true"></i>
-          <input type="text" name="email" placeholder="Username" class="form-group">
+          <input type="text" name="email" id="email" placeholder="Username" class="form">
         </div>
       </div>
     <div class="textbox">
       <div class="md-form">
   	   	<i class="fa fa-key" aria-hidden="true"></i>
-        <input type="password" name="password" class="sm-form form-group" placeholder="Password">
+        <input type="password" name="password" id="password" class="sm-form form" placeholder="Password">
     </div>
   </div><br>
     <input class="btn btn-success hover" name="signin" type="submit" value="Sign In" onclick="userAuthentication()"><hr>
     <div class="text-white">
        <a href="file:///home/madhav/project/online-examination/forgot account.html"><h6 align="center">Forgot Password?</h6></a>
-    </div> <hr>
-    <div class="text-white">
-				<h3 align="center">OR</h3>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-lg-6" align="center" style="border-radius: 50%;">
-        <a href="https://twitter.com/login?lang=en"><img src="file:///home/madhav/Downloads/twitter.png" width="40px" height="40px" alt="Avatar"></a>
-      </div>
-    <div class="col-lg-6" align="center" style="border-radius: 50%;">
-      <a href="https://www.facebook.com/"><img src="file:///home/madhav/Downloads/facebook.png" width="40px" height="40px" alt="Avatar"></a>
   </div>
-</div>
+</form>
 <script>
   function userAuthentication(form)
   {
-    var settings = {
-                  "async": true,
-                  "crossDomain": true,
-                  "url": "http://localhost/api/check_user.php",
-                  "method": "POST",
-                  "headers": {
-                            "cache-control": "no-cache",
-                            "postman-token": "5e6ba4b8-3395-c6eb-16cf-918e1fb84482"
-                             }
-                  }
+          var form = new FormData();
+          form.append("email", document.getElementById('email').value);
+          form.append("password",document.getElementById('password').value);
 
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-    });
+          var settings = {
+                          "async": true,
+                          "crossDomain": true,
+                          "url": "http://localhost/api/check_user.php",
+                          "method": "POST",
+                          "headers": 
+                          {
+                              "cache-control": "no-cache",
+                              "postman-token": "bf13fd1c-ac8f-f29c-bdaa-bd88919dcf01"
+                          },
+                          "processData": false,
+                          "contentType": false,
+                          "mimeType": "multipart/form-data",
+                          "data": form,
+                          "success": function()
+                                          { 
+                                            alert("User Found.Logged In successfully");
+                                            window.location.href = "file:///home/madhav/project/online-examination/Mainhome.html";
+                                          },
+                          }
+
+          $.ajax(settings).done(function (response) {
+          console.log(response);
+          });
   }
 </script>
 <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>

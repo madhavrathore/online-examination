@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
     <body>
         <header>
@@ -87,7 +86,7 @@
                           </div>
                         </div>
                         <div class="md-form">
-                            <input type="Number" name="phone-number" class="form-group" placeholder="Phone Number" required>
+                            <input type="Number" id="phone-number" name="phone-number" class="form-group" placeholder="Phone Number" required>
 
                         <div class="md-form">Birthday:<br>&nbsp;
                           <div id="birthday">
@@ -99,7 +98,7 @@
                             <input id="gender" type="radio" name="gender" value="Male" >Male
                             <input type="radio" id="gender" name="gender" value="Female">Female</div>
                               <div class="text-center mt-4">
-                          <input type="submit" class="btn btn-success" value="Sign Up" onClick=submitForm(this)>
+                          <input type="submit" class="btn btn-success" value="Sign Up" onClick="submitForm(this)">
                           <div class="text-center mt-4">
                             <input type="checkbox" value="I agree to">I agree to<a class="btn-hover" href="/home/madhav/project/online-examination/terms and condition.html" required>Terms and condition</div>
                             </a>
@@ -123,11 +122,14 @@
     var password = document.getElementById('password').value; 
     var confirmPassword = document.getElementById('confirm-password').value; 
     // If password not entered 
-    if (password != confirmPassword) {  
+    if (password != confirmPassword)
+    {  
+    	alert("Check password");
         return false; 
     }
     // If same return True. 
-    else{  
+    else
+    {  
         return true; 
     }
   }
@@ -136,7 +138,6 @@
   {
       if(checkPassword(form) == true)
       {
-        alert("into if check password")
         var form = new FormData();
         form.append("name",document.getElementById('name').value);
         form.append("email",document.getElementById('email').value);
@@ -153,14 +154,23 @@
                           "headers": {
                             "cache-control": "no-cache",
                             "postman-token": "98f1bfbe-15ff-c932-5d5f-5e41042629ef"
-                              },
+                        },
                           "processData": false,
                           "contentType": false,
                           "mimeType": "multipart/form-data",
-                          "data": form
+                          "data": form,
+                          "success": function()
+                          { 
+                          	alert("Successfully created record");
+                            window.location.href = "file:///home/madhav/project/online-examination/login.html";
+                          },
+                          // error: function(XMLHttpRequest, textStatus, errorThrown){ 
+                            // alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                          // }  
                         }
-        $.ajax(settings).done(function (response) {
-          console.log(response);
+        $.ajax(settings).done(function (response) 
+        {
+           console.log(response);
         });
       }
   }
