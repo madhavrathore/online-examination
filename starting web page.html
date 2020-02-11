@@ -75,18 +75,18 @@
                         </div>
                         <div class="md-form">
                           <div class="form-group">
-                            <input type="password" id="password" name="password" autofocus="1" placeholder="New password" minlength="9" maxlength="12"
+                            <input type="password" id="password" name="password" autofocus="1" placeholder="New password" minlength="9"
                            required data-toggle="password" required>   
                           </div>
                         </div>
                         <div class="md-form">
                           <div class="form-group">
-                            <input type="password" id="confirm-password" name="confirm-password"  placeholder="Re-enter password" minlength="9" maxlength="12"
+                            <input type="password" id="confirm-password" name="confirm-password"  placeholder="Re-enter password" minlength="9"
                             requireddata-toggle="password" required>
                           </div>
                         </div>
                         <div class="md-form">
-                            <input type="Number" id="phone-number" name="phone-number" class="form-group" placeholder="Phone Number" required>
+                            <input type="tel" id="phone-number" name="phone-number" class="form-group" placeholder="Phone Number" data-validation="number" pattern="[7-9]{1}[0-9]{9}" maxlength="10" requireddata-toggle="Mobile Number" required>
 
                         <div class="md-form">Birthday:<br>&nbsp;
                           <div id="birthday">
@@ -118,6 +118,43 @@
   </nav>
 </header>
 <script>
+  function checkEmail(form)
+  {
+      var form = new FormData();
+      form.append("email",document.getElementById('email').value);
+            var settings = {
+                      "async": true,
+                      "crossDomain": true,
+                      "url": "http://localhost/api/checking_email.php",
+                      "method": "POST",
+                      "headers": {
+                      "cache-control": "no-cache",
+                      "postman-token": "dde43962-a429-74bd-dd82-3bea7fba488a"
+                      },
+                      "processData": false,
+                      "contentType": false,
+                      "mimeType": "multipart/form-data",
+                      "data": form,
+                                  "success": function()
+                                    { 
+                                       alert("Email is already present");
+                                    }
+                            }
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
+  }
+  function validateEmail(form) 
+    {
+     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById('email').value))
+      {
+        return true;
+      }
+        alert("You have entered an invalid email address!");
+        return false;    
+    }
+
+
   function checkPassword(form) { 
     var password = document.getElementById('password').value; 
     var confirmPassword = document.getElementById('confirm-password').value; 
@@ -136,7 +173,7 @@
 
   function submitForm(form)
   {
-      if(checkPassword(form) == true)
+      if(checkPassword(form) == true && validateEmail(form) == true)
       {
         var form = new FormData();
         form.append("name",document.getElementById('name').value);
@@ -179,4 +216,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </body>
-</html>

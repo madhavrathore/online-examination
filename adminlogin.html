@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-scribe-reduced-action-queue="true">
+<head>
+	<title>Online Examination  Login</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+	<form name="newForm">
+	    <div class="login-box">
+	      <h1 style="color: brown;">Admin Login</h1>
+	        <div class="textbox">
+	          <div class="md-form">
+	      	 <i class="fa fa-user-circle" aria-hidden="true"></i>
+	          <input type="text" name="email" id="email" placeholder="Username" class="form">
+	        </div>
+	      </div>
+	    <div class="textbox">
+	      <div class="md-form">
+	  	   	<i class="fa fa-key" aria-hidden="true"></i>
+	        <input type="password" name="password" id="password" class="sm-form form" placeholder="Password" class="form">
+	    </div>
+	  </div><br>
+	    <input class="btn btn-success hover" name="signin" type="submit" value="Sign In" onclick="adminAuthentication()">
+	  </div>
+	</form>
+	<script>
+	function adminAuthentication(form)
+	{
+			var form = new FormData();
+			form.append("email", document.getElementById('email').value);
+			form.append("password", document.getElementById('password').value);
+
+			var settings = {
+							  "async": true,
+							  "crossDomain": true,
+							  "url": "http://localhost/api/checkAdminUser.php",
+							  "method": "POST",
+							  "headers": {
+										    "cache-control": "no-cache",
+										    "postman-token": "eca57140-1a67-99a4-321c-66970969dfbe"
+							 			 },
+							  "processData": false,
+							  "contentType": false,
+							  "mimeType": "multipart/form-data",
+							  "data": form,
+							  "success":function()
+							  {
+							  		alert("Admin Found");
+							  		window.location.href = "file:///home/madhav/project/online-examination/admin.html";	
+							  },
+							  "error":function()
+							  {
+							  		alert("Error while logging");
+							  }
+							}
+
+			 $.ajax(settings).done(function (response) 
+			 	{
+          			console.log(response);
+          		});
+	}
+</script>
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

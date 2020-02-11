@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<title>Home</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="file:///home/madhav/project/online-examination/HomePage.css">
+
+</head>
+
+<body class="img">
+  <div class="fluid-container">
+      <nav class="navbar navbar-default navbar-header navbar-expand-lg bg-dark col-lg-12 container" style="color:#343a40;background-color:#343a40;border-color:#343a40">
+          <a class="navbar-brand" href="file:///home/madhav/project/online-examination/HomePage.html" style="color: white;">Home</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                    <li class="navbar-brand">
+                     <a class="nav-link" href="#" style="color: white;">About</a>
+                    </li>
+                    <li class="navbar-brand">
+                      <a class="nav-link " href="#" style="color:white;">Help</a>
+                    </li>
+                    <li class="navbar-brand">
+                      <div class="dropdown">
+                        <a class="nav-link"  role="dropdown-menu" id="dropdownMenuLink" data-toggle="dropdown" style="color: white;">
+                        Explore
+                       </a>
+                      <form name='newForm'>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Business</a>
+                        <a class="dropdown-item" onclick="institutes()">Computer Science</a>
+                        <a class="dropdown-item" href="#">General Knowledge</a>
+                        <a class="dropdown-item" href="#">Information Technology</a>
+                     </div>
+                   </form>
+                   </div>
+                   </li>
+                   <li class="navbar-brand">
+                      <a class="nav-link" href="#" style="color:white";>Results</a>
+                  </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+              </form> 
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <ul class="nav navbar-nav navbar-header navbarSupportedContent">
+                <div class="my-2 my-lg-0x">
+                    <li>
+                    <i class="fa fa-user-circle" style="font-size:28px;color: white";></i>
+                      <input type="button" class="btn btn-dark" id="logout" onclick='window.location.href="file:///home/madhav/project/online-examination/login.html"' value="Sign Out" >
+                    </li>
+                  </div>
+              </ul>
+            </div>
+          </nav>
+        </div>
+</body>
+<script>
+  function institutes(form)
+  {
+          var form = new FormData();
+          form.append("1", "jhsdf");
+          var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost/api/institute.php",
+            "method": "GET",
+            "headers": {
+              "cache-control": "no-cache",
+              "postman-token": "02557d64-6cd0-9789-11df-fecbcdba1652"
+            },
+            "processData": false,
+            "contentType": false,
+            "mimeType": "multipart/form-data",
+            "data": form
+          }
+
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+          });
+  }
+</script>
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</html>

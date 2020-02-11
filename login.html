@@ -84,11 +84,15 @@
                           "contentType": false,
                           "mimeType": "multipart/form-data",
                           "data": form,
-                          "success": function()
+                          success: function()
                                           { 
-                                            alert("User Found.Logged In successfully");
-                                            window.location.href = "file:///home/madhav/project/online-examination/Mainhome.html";
+                                            alert("User found.Logged In successfully");
+                                            window.location.href = "file:///home/madhav/project/online-examination/HomePage.html";
                                           },
+                            error:function()
+                            {
+                            	alert("User Not Found");
+                            }
                           }
 
           $.ajax(settings).done(function (response) {
