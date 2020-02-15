@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Adding A File</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="margin-top: 15%;margin-left: 40%";>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top container-fluid">
+	  <a class="navbar-brand" href="admin.html">Home</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-tarPOST="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	</nav>
+		<div class="center">
+			<form name="newForm"  enctype="multipart/form-data">
+				<div>
+					<h5>Add Institutes here</h5><br>
+					<input type="text"  size="30" name="institute" id="institute" placeholder="Institute Name" style="border-radius: 10px";><br><br>
+					<input type="submit" class="btn btn-primary" style="border-radius: 10px"; value="Add Institute" onclick="addInstitutes(this)"><br>
+				</div>
+			</form>
+	</div>
+<script>
+	function addInstitutes(form)
+	{
+				var form = new FormData();
+				form.append("name",document.getElementById('institute'));
+
+				var settings = {
+				  "async": true,
+				  "crossDomain": true,
+				  "url": "http://localhost/api/adding_institutes.php",
+				  "method": "POST",
+				  "headers": {
+				    "cache-control": "no-cache",
+				    "postman-token": "a9308cb2-d52a-eb75-6b07-b2f43f5b049b"
+				  },
+				  "processData": false,
+				  "contentType": false,
+				  "mimeType": "multipart/form-data",
+				  "data": form,
+				  success:function()
+				  {
+				  		alert("Institute added successfully");
+				  },
+				  failure:function()
+				  {
+				  		alert("Cannot add a institute");
+				  }
+				}
+
+				$.ajax(settings).done(function (response) {
+				  console.log(response);
+				});
+	}
+</script>

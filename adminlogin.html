@@ -23,7 +23,7 @@
 	        <input type="password" name="password" id="password" class="sm-form form" placeholder="Password" class="form">
 	    </div>
 	  </div><br>
-	    <input class="btn btn-success hover" name="signin" type="submit" value="Sign In" onclick="adminAuthentication()">
+	    <input class="btn btn-success hover" name="signin" type="submit" value="Sign In" onclick="adminAuthentication(this)">
 	  </div>
 	</form>
 	<script>
@@ -51,7 +51,7 @@
 							  		alert("Admin Found");
 							  		window.location.href = "file:///home/madhav/project/online-examination/admin.html";	
 							  },
-							  "error":function()
+							  failure:function()
 							  {
 							  		alert("Error while logging");
 							  }

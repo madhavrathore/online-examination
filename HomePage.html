@@ -58,32 +58,50 @@
           </nav>
         </div>
 </body>
-<script>
-  function institutes(form)
-  {
-          var form = new FormData();
-          form.append("1", "jhsdf");
-          var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "http://localhost/api/institute.php",
-            "method": "GET",
-            "headers": {
-              "cache-control": "no-cache",
-              "postman-token": "02557d64-6cd0-9789-11df-fecbcdba1652"
-            },
-            "processData": false,
-            "contentType": false,
-            "mimeType": "multipart/form-data",
-            "data": form
-          }
-
-          $.ajax(settings).done(function (response) {
-            console.log(response);
-          });
-  }
-</script>
 <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script>
+   $( document ).ready(function()
+  {
+  			var html='';
+  		  	var form = new FormData();
+			form.append("1", "jhsdf");
+					var settings = {
+					  "async": true,
+					  "crossDomain": true,
+					  "url": "http://localhost/api/institute.php",
+					  "method": "GET",
+					  "headers": {
+					    "cache-control": "no-cache",
+					    "postman-token": "8d11d043-6d95-20ea-6142-0a846ee1987f"
+					  },
+					  "processData": false,
+					  "contentType": false,
+					  "mimeType": "multipart/form-data",
+					  "data": form
+					}
+
+					$.ajax(settings).done(function (response) {
+					  console.log(response);
+					 
+						  for(var key in response) 
+						  {
+				            	var value = response[key];
+				                html=html+value;
+				        		// var array=array_push(html);
+			           	  }
+						  
+						  var node = document.createElement("LI");
+						  var textnode = document.createTextNode(html);
+						  node.appendChild(textnode);
+						  document.getElementById("Institute-data").appendChild(node);
+						
+				
+			});
+        })
+</script>
+<h3 align="center" style="color:yellow";>Institutes</h3>
+<ul style="margin-left:20%;color: white;font-size: 22px"; id="Institute-data">
+</ul>
 </html>

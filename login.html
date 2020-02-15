@@ -46,23 +46,28 @@
     <div class="login-box">
       <h1>Login</h1>
         <div class="textbox">
-          <div class="md-form">
-      	 <i class="fa fa-user-circle" aria-hidden="true"></i>
-          <input type="text" name="email" id="email" placeholder="Username" class="form">
+              <div class="md-form">
+              	   <i class="fa fa-user-circle" aria-hidden="true"></i>
+                   <input type="text" name="email" id="email" placeholder="Username" class="form">
+              </div>
         </div>
-      </div>
-    <div class="textbox">
-      <div class="md-form">
-  	   	<i class="fa fa-key" aria-hidden="true"></i>
-        <input type="password" name="password" id="password" class="sm-form form" placeholder="Password">
-    </div>
-  </div><br>
-    <input class="btn btn-success hover" name="signin" type="submit" value="Sign In" onclick="userAuthentication()"><hr>
+        <div class="textbox">
+              <div class="md-form">
+          	   	<i class="fa fa-key" aria-hidden="true"></i>
+                <input type="password" name="password" id="password" class="sm-form form" placeholder="Password">
+              </div>
+       </div>
+        <br>
+        <input class="btn btn-success hover" name="signin" type="submit" value="Sign In" onclick="userAuthentication(this)"><hr>
+        <a href="file:///home/madhav/project/online-examination/adminlogin.html"><h6 align="center">Admin Login</h6></a>
     <div class="text-white">
        <a href="file:///home/madhav/project/online-examination/forgot account.html"><h6 align="center">Forgot Password?</h6></a>
     </div>
   </div>
 </form>
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script>
   function userAuthentication(form)
   {
@@ -100,8 +105,5 @@
           });
   }
 </script>
-<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </body>
 </html>

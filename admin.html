@@ -18,6 +18,9 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item">
+	      	<strong><a class="nav-link" href="file:///home/madhav/project/online-examination/addInstitutes.html">Add Institutes</a></strong>
+	      </li>
+	      <li class="nav-item">
 	       <strong><a class="nav-link" href="#">Result</a></strong>
 	      </li>
 	      <li class="nav-item">
@@ -30,16 +33,20 @@
 		<div class="row">
 			<div class="col-3">
 			</div>
-			<div class="col-5">
-				<form class="form-horizontal" action="addfile.php" method="post" name="uploadCSV"
+			<div class="col-8">
+				<form class="form-horizontal" name="newForm" 
 		   				 enctype="multipart/form-data">
 					    <div class="input-row">
-					        <label class="col-md-4 control-label">Choose CSV File</label><br><br>
-					        <input type="file" class="container" name="file" id="file" accept=".csv">
-					        <br><br>
-					        <button type="submit" id="submit" name="import"
-					            class="btn btn-primary">Import</button>
-					        <br>
+					       <h4>Add Questions and Options with Correct answer</h4><br><br>
+					       <input type="text" name="question" id="question" placeholder="Enter question" size="50"><br><br>
+					        <input type="text" name="subject_id" id="subject_id" placeholder="Subject Id" size="50"><br><br>
+					        <input type="text" name="qo1" id="qo1" placeholder="Enter Option1"><br><br>
+					        <input type="text" name="qo2" id="qo2" placeholder="Enter Option2"><br><br>
+					        <input type="text" name="qo3" id="qo3" placeholder="Enter Option3"><br><br>
+					        <input type="text" name="qo4" id="qo4" placeholder="Enter Option4"><br><br>
+					        <input type="text" name="correctOption" id="correctOption" placeholder="Correct Answer"><br><br>
+					        <input type="submit" class="btn btn-primary"  value="Insert" onclick="InsertQueries(this)">
+					        &nbsp;&nbsp;
 					    </div>
 		   		 <div id="labelError"></div>
 				</form>
@@ -47,29 +54,45 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript">
-	$(document).ready(
-	function() {
-		$("#frmCSVImport").on(
-		"submit",
-		function() {
+<script>
+  	function InsertQueries(form)
+  	{
+				var form = new FormData();
+				form.append("question", document.getElementById('question').value);
+				form.append("subject_id", document.getElementById('subject_id').value);
+				form.append("qo1", document.getElementById('qo1').value);
+				form.append("qo2", document.getElementById('qo2').value);
+				form.append("qo3", document.getElementById('qo3').value);
+				form.append("qo4", document.getElementById('qo4').value);
+				form.append("correctOption", document.getElementById('correctOption').value);
 
-			$("#response").attr("class", "");
-			$("#response").html("");
-			var fileType = ".csv";
-			var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+("
-					+ fileType + ")$");
-			if (!regex.test($("#file").val().toLowerCase())) {
-				$("#response").addClass("error");
-				$("#response").addClass("display-block");
-				$("#response").html(
-						"Invalid File. Upload : <b>" + fileType
-								+ "</b> Files.");
-				return false;
-			}
-			return true;
-		});
-	});
+				var settings = {
+				  "async": true,
+				  "crossDomain": true,
+				  "url": "http://localhost/api/addQuestion.php",
+				  "method": "POST",
+				  "headers": {
+				    "cache-control": "no-cache",
+				    "postman-token": "24877f19-0802-3fda-3ef0-4bbc76b37be1"
+				  },
+				  "processData": false,
+				  "contentType": false,
+				  "mimeType": "multipart/form-data",
+				  "data": form,
+				  success:function()
+				  {
+				  		alert("Values inserted successfully");
+				  },
+				  failure:function()
+				  {
+				  		alert("Something Error:Values cannot be inserted");
+				  }
+				}
+
+				$.ajax(settings).done(function (response) {
+				  console.log(this.response);
+				});
+  	}
 </script>
 <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
