@@ -16,19 +16,25 @@
 	  </button>
 	</nav>
 		<div class="center">
-			<form name="newForm"  enctype="multipart/form-data">
-				<div>
+			<form  name='newForm' method="POST" action="http://localhost/api/adding_institutes.php" enctype="multipart/form-data">
 					<h5>Add Institutes here</h5><br>
-					<input type="text"  size="30" name="institute" id="institute" placeholder="Institute Name" style="border-radius: 10px";><br><br>
-					<input type="submit" class="btn btn-primary" style="border-radius: 10px"; value="Add Institute" onclick="addInstitutes(this)"><br>
-				</div>
+					Institue Name:<input type="text"  size="30" name="name" id="name" placeholder="Institute Name" style="border-radius: 0px";><br><br>
+					Select Image: <input type="file" id="image" name="image" accept="image/*"><br><br>
+					Discription:<input  type="text" name="discription" id="discription" placeholder="Write Discription" style="width: 60%";><br><br>
+					<input type="submit" class="btn btn-primary" style="border-radius: 10px"; value="Add Institute"><br>
 			</form>
 	</div>
-<script>
+</body>
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<!-- <script>
 	function addInstitutes(form)
 	{
 				var form = new FormData();
-				form.append("name",document.getElementById('institute'));
+				form.append("name",document.getElementById('name').value);
+				form.append("image", document.getElementById('image','name').src);
+				form.append("discription", document.getElementById('discription').value);
 
 				var settings = {
 				  "async": true,
@@ -42,19 +48,12 @@
 				  "processData": false,
 				  "contentType": false,
 				  "mimeType": "multipart/form-data",
-				  "data": form,
-				  success:function()
-				  {
-				  		alert("Institute added successfully");
-				  },
-				  failure:function()
-				  {
-				  		alert("Cannot add a institute");
-				  }
+				  "data": form
 				}
 
 				$.ajax(settings).done(function (response) {
 				  console.log(response);
 				});
 	}
-</script>
+</script> -->
+</html>

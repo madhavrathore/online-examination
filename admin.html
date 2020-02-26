@@ -10,7 +10,7 @@
 
 <body style="background-color: rgb(229, 228, 226);">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top container-fluid">
-	  <a class="navbar-brand" href="admin.html">Home</a>
+	  <a class="navbar-brand" href="admin.html" style="color: white">Home</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-tarPOST="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -18,13 +18,13 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item">
-	      	<strong><a class="nav-link" href="file:///home/madhav/project/online-examination/addInstitutes.html">Add Institutes</a></strong>
+	      	<strong><a class="nav-link" href="file:///home/madhav/project/online-examination/addInstitutes.html" style="color: white";>Add Institutes</a></strong>
 	      </li>
 	      <li class="nav-item">
-	       <strong><a class="nav-link" href="#">Result</a></strong>
+	       <strong><a class="nav-link" href="#" style="color: white">Result</a></strong>
 	      </li>
 	      <li class="nav-item">
-	        <strong><a class="nav-link" href="#">Set Test</a></strong>
+	        <strong><a class="nav-link" href="#" style="color: white">Set Test</a></strong>
 	      </li>
 	    </ul>
 	  </div>
@@ -54,6 +54,9 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script>
   	function InsertQueries(form)
   	{
@@ -81,20 +84,16 @@
 				  "data": form,
 				  success:function()
 				  {
-				  		alert("Values inserted successfully");
+				  		alert("Questions added successfully");
 				  },
 				  failure:function()
-				  {
-				  		alert("Something Error:Values cannot be inserted");
-				  }
+					{
+						alert("Error in code");
+					}
 				}
-
 				$.ajax(settings).done(function (response) {
 				  console.log(this.response);
 				});
   	}
 </script>
-<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </html>

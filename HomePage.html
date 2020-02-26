@@ -4,7 +4,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="file:///home/madhav/project/online-examination/HomePage.css">
 
@@ -19,8 +19,8 @@
                     <li class="navbar-brand">
                      <a class="nav-link" href="#" style="color: white;">About</a>
                     </li>
-                    <li class="navbar-brand">
-                      <a class="nav-link " href="#" style="color:white;">Help</a>
+                    <li class="navbar-brand menu-link">
+                      <a class="nav-link menu-item" href="#" style="color:white;">Help</a>
                     </li>
                     <li class="navbar-brand">
                       <div class="dropdown">
@@ -28,11 +28,10 @@
                         Explore
                        </a>
                       <form name='newForm'>
-                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" role="presentation">
                         <a class="dropdown-item" href="#">Business</a>
-                        <a class="dropdown-item" onclick="institutes()">Computer Science</a>
+                        <a class="dropdown-item" href="#">Computer Science</a>
                         <a class="dropdown-item" href="#">General Knowledge</a>
-                        <a class="dropdown-item" href="#">Information Technology</a>
                      </div>
                    </form>
                    </div>
@@ -48,7 +47,10 @@
               &nbsp;&nbsp;&nbsp;&nbsp;
               <ul class="nav navbar-nav navbar-header navbarSupportedContent">
                 <div class="my-2 my-lg-0x">
+                  <li>
+                  </li>
                     <li>
+
                     <i class="fa fa-user-circle" style="font-size:28px;color: white";></i>
                       <input type="button" class="btn btn-dark" id="logout" onclick='window.location.href="file:///home/madhav/project/online-examination/login.html"' value="Sign Out" >
                     </li>
@@ -57,16 +59,19 @@
             </div>
           </nav>
         </div>
+        <h3 align="center" style="color:black;font-size: 50";>Institutes</h3><br><br>
+        <p id="instituteData"><a href="instituteData">
+        </a></p>
 </body>
 <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 <script>
-   $( document ).ready(function()
+   $(document).ready(function()
   {
-  			var html='';
-  		  	var form = new FormData();
-			form.append("1", "jhsdf");
+  			  	var html='';
+  		  		var form = new FormData();
+			    form.append("1", "jhsdf");
 					var settings = {
 					  "async": true,
 					  "crossDomain": true,
@@ -79,29 +84,50 @@
 					  "processData": false,
 					  "contentType": false,
 					  "mimeType": "multipart/form-data",
-					  "data": form
+            		  "data" : {name}
 					}
 
 					$.ajax(settings).done(function (response) {
-					  console.log(response);
-					 
-						  for(var key in response) 
-						  {
-				            	var value = response[key];
-				                html=html+value;
-				        		// var array=array_push(html);
-			           	  }
-						  
-						  var node = document.createElement("LI");
-						  var textnode = document.createTextNode(html);
-						  node.appendChild(textnode);
-						  document.getElementById("Institute-data").appendChild(node);
-						
-				
+					console.log(response);
+
+		            var response = JSON.parse(response).data;
+
+                	html+='<div class="row">';
+		            for (i = 0; i < response.length; i++)
+		            { 
+	                  html+='<div class="col-md-4">';
+	                  html+='<div class="grid-container">';
+	                  html+='<div class="flip-card">';
+	                  html+='<div class="flip-card-inner">';
+	                  html+='<div class="flip-card-front">';
+	                  html+='<img src="images/'+response[i].image+'" alt="Avatar" style="width:300px;height:200px;">';
+	                  html+='</div>';
+	                  html+='<div class="flip-card-back">';
+	                  html +='<h1>'+response[i].name+'</h1>';
+	                  html +='<h3>'+response[i].discription+'</h3>';
+	                  html+='<div class="card-footer bg-clear">';
+	                  html+='<form name="newForm">';
+	                  html+='<input type="button" value="Enroll" class="btn btn-success undo" id="'+response[i].id+' " onclick="'+enroll(this)+'">';
+	                  html+='</form>';
+	                  html+='</div>';
+	                  html+='</div>';
+	                  html+='</div>';
+	                  html+='</div>';
+	                  html+='</div>';
+	                  html+='</div>';
+		              document.getElementById("instituteData").innerHTML = html;
+		            }          
+                html+='</div>';
 			});
-        })
+    });
 </script>
-<h3 align="center" style="color:yellow";>Institutes</h3>
-<ul style="margin-left:20%;color: white;font-size: 22px"; id="Institute-data">
-</ul>
+<script>
+		function enroll(form)
+		{
+	        $(".undo").on('click',function()
+	        {	
+	       
+	    	});
+	    }
+</script>
 </html>
